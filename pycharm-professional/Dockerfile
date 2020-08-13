@@ -13,6 +13,7 @@ RUN buildDeps=' \
         git \
         ca-certificates \
         python3 \
+        python3-venv \
         x11-utils \
     ' \
     set -x \
