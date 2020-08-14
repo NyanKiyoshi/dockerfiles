@@ -34,4 +34,7 @@ RUN curl -sSL "https://attachments3.clickup.com/desktop/clickup-desktop-${CLICKU
 # This will run the AppImage and extract it before running it.
 # It will also prevent Electron to try to run as root using "--no-sandbox"
 ENTRYPOINT [ "/clickup.AppImage" ]
-CMD [ "--appimage-extract-and-run", "--no-sandbox" ]
+
+# Disabling SHM usage fixes out of memory crashes:
+# [181:0814/132905.964023:FATAL:memory.cc(22)] Out of memory. size=262144
+CMD [ "--appimage-extract-and-run", "--no-sandbox", "--enable-logging", "--disable-dev-shm-usage" ]
