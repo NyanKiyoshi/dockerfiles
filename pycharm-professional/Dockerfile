@@ -28,4 +28,10 @@ RUN buildDeps=' \
     && rm -rf /var/lib/apt/lists/* \
     && echo "Build complete."
 
+# Any additional dependencies wanted at runtime
+ARG additionalDependencies="gcc python3-dev"
+
+RUN apt update && apt install --no-install-recommends -y $additionalDependencies && rm -rf /var/lib/apt/lists/*
+
 ENTRYPOINT [ "/app/bin/pycharm.sh" ]
+
